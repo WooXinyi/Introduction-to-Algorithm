@@ -42,6 +42,14 @@ def Find_maximum_subarray(nums, low, high):
     if cross_sum > left_sum and cross_sum > right_sum:
         return cross_low, cross_high, cross_sum
     
+#Method two
+def Find_maximum_subarray_II(nums):
+    max_sum = cur_sum = 0
+    for num in nums:
+        cur_sum = max(cur_sum+num, num)
+        max_sum = max(cur_sum, max_sum)
+    return max_sum
+    
 nums = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
-low, high, s = Find_maximum_subarray(nums, 0, len(nums)-1)
-print(low, high, s)
+max_sum = Find_maximum_subarray_II(nums)
+print(max_sum)
